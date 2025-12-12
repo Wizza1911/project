@@ -7,20 +7,11 @@ typedef struct
 int Num;
 int Denom;
 } FRAC;
-int get_gcd(int x,int y)
-{
-    if(x%y==0)
-        return y;
-    return get_gcd(y,x%y);
-}
 FRAC Multiply_fractions (FRAC n , FRAC m)
 {
 FRAC ans;
 ans.Num= n.Num * m.Num;
 ans.Denom = n.Denom * m.Denom;
-int r=get_gcd(ans.Num,ans.Denom);
-ans.Num/=r;
-ans.Denom/=r;
 return ans;
 }
 FRAC Divide_fractions (FRAC n , FRAC m)
@@ -28,9 +19,6 @@ FRAC Divide_fractions (FRAC n , FRAC m)
     FRAC ans;
     ans.Num=n.Num*m.Denom;
     ans.Denom=n.Denom*m.Num;
-    int r=get_gcd(ans.Num,ans.Denom);
-    ans.Num/=r;
-    ans.Denom/=r;
     return ans;
 }
 FRAC ADD_fractions (FRAC n , FRAC m)
@@ -38,9 +26,6 @@ FRAC ADD_fractions (FRAC n , FRAC m)
     FRAC ans;
     ans.Num=n.Num*m.Denom+m.Num*n.Denom;
     ans.Denom=n.Denom*m.Denom;
-    int r=get_gcd(ans.Num,ans.Denom);
-    ans.Num/=r;
-    ans.Denom/=r;
     return ans;
 }
 int main()
